@@ -125,6 +125,19 @@ body {
 .footer-link:focus {
   color: var(--accent-color);
 }
+.current {
+  position: relative;
+}
+.current::after {
+  position: absolute;
+  bottom: 0;
+  content: '';
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  border-radius: 2px;
+}
 
 /*Герой*/
 .hero {
@@ -249,8 +262,26 @@ body {
   margin-left: -30px;
 }
 .works .item {
+  position: relative;
   margin-left: 30px;
   flex-basis: calc((100% - 90px) / 3);
+}
+.works-text {
+  position: absolute;
+  bottom: 0;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  text-align: center;
+  text-transform: uppercase;
+
+  width: 100%;
+  padding-top: 27px;
+  padding-bottom: 27px;
+
+  background: rgba(47, 48, 58, 0.8);
+  color: var(--white-color);
 }
 
 /* Наша команда */
