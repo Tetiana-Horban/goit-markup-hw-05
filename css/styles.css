@@ -1,4 +1,5 @@
 :root {
+  --transition: 2500ms cubic-bezier(0.4, 0, 0.2, 1);
   --primary-text-color: #757575;
   --title-color: #212121;
   --white-color: #ffffff;
@@ -96,6 +97,8 @@ body {
 
   padding-top: 36px;
   padding-bottom: 30px;
+
+  transition: color var(--transition);
 }
 .link-info {
   display: flex;
@@ -107,6 +110,8 @@ body {
   letter-spacing: 0.02em;
 
   color: var(--primary-text-color);
+
+  transition: color var(--transition);
 }
 /* Icon */
 .info .icon {
@@ -188,6 +193,8 @@ body {
   padding: 10px 32px;
   border: solid transparent;
   border-radius: 4px;
+
+  transition: background-color var(--transition), box-shadow var(--transition);
 }
 .button-hero:hover {
   background-color: #188ce8;
@@ -304,6 +311,8 @@ body {
   display: flex;
   padding: 12px;
   border-radius: 50%;
+
+  transition: background-color var(--transition), fill var(--transition);
 }
 .list-icon .icon + .icon {
   margin-left: 10px;
@@ -350,6 +359,8 @@ body {
   width: 100%;
   height: 100%;
   fill: #afb1b8;
+
+  transition: fill var(--transition), border var(--transition);
 }
 .clients .icon-link:hover,
 .clients .icon-link:focus {
@@ -386,8 +397,13 @@ body {
 .address-link {
   color: var(--white-color);
 }
+.address-link {
+  transition: color var(--transition);
+}
 .footer-link {
   color: rgba(255, 255, 255, 0.6);
+
+  transition: color var(--transition);
 }
 .address .item {
   margin-bottom: 9px;
@@ -410,6 +426,8 @@ body {
 .social-link .icon-link {
   background-color: rgba(255, 255, 255, 0.1);
   fill: var(--white-color);
+
+  transition: background-color var(--transition);
 }
 .social-link .icon-link:hover,
 .social-link .icon-link:focus {
@@ -449,6 +467,9 @@ body {
 
   border-radius: 4px;
   border: solid transparent;
+
+  transition: background-color var(--transition), color var(--transition),
+    box-shadow var(--transition);
 }
 .button-portfolio:hover,
 .button-portfolio:focus {
@@ -468,8 +489,11 @@ body {
   margin-top: 30px;
   flex-basis: calc((100% - 90px) / 3);
 }
-.portfolio .item:hover,
-.portfolio .item:focus {
+.portfolio .link {
+  transition: box-shadow var(--transition);
+}
+.portfolio .link:hover,
+.portfolio .link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
 }
@@ -495,4 +519,83 @@ body {
   padding-right: 24px;
   border: 1px solid #eeeeee;
   border-top: none;
+}
+.portfolio .overlay {
+  position: relative;
+  overflow: hidden;
+}
+.portfolio .link:hover .overlay-text,
+.portfolio .link:focus .overlay-text {
+  transform: translateY(0%);
+}
+.overlay-text {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 63px 24px;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 18px;
+  line-height: 1.55;
+
+  color: var(--white-color);
+  background: rgba(33, 150, 243, 0.9);
+
+  transition: transform var(--transition);
+
+  transform: translateY(100%);
+}
+/* Backdrop */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+
+  transition: visibility var(--transition), opacity var(--transition);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 528px;
+  height: 581px;
+
+  background: var(--white-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transform: translate(-50%, -50%);
+}
+.btn-modal {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+  width: 30px;
+  height: 30px;
+  padding: 0;
+
+  cursor: pointer;
+
+  background: var(--white-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
